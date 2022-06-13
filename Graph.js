@@ -67,3 +67,26 @@ function bfs(start) {
 bfs('PHX');
 
 
+//DFS Depth First Search
+let dfsCounter = 0
+
+function dfs(start, visited = new Set()){
+    console.log(start)
+
+    visited.add(start);
+
+    const destinations = adjacencyList.get(start)
+
+    for (const destination of destinations){
+        dfsCounter++
+        if (destination === 'BKK'){
+            console.log(`DFS found Bangkok in ${dfsCounter} steps`)
+        }
+        if(!visited.has(destination)){
+            dfs(destination, visited);
+        }
+
+    }
+}
+
+dfs('PHX')
